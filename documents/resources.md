@@ -8,5 +8,5 @@
 - [Гугл-таблица для планирования контента](https://docs.google.com/spreadsheets/...)
 ## Группы проекта
 - [RUTUBE](https://rutube.ru/channel/78515935/)
-- [VK] (https://vk.ru/fit.mospolytech)
+- [VK](https://vk.ru/fit.mospolytech)
 - [TELEGRAM](https://t.me/itcpdmospolytech)
