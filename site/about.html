@@ -29,7 +29,7 @@
                 <p>Привлечь внимание абитуриентов к <strong>Факультету информационных технологий</strong> через качественный видеоконтент в социальных сетях.</p>
             </div>
             <div class="info-card">
-                <h3><i class="fas fa-tasks" style="color: #D84315;"></i> Задачи</h3>
+                <h3><i class="fas fa-tasks" style="color: #D84315;"></i> Задачи и прогресс</h3>
                 <ul>
                     <li>Создать серию из 12+ коротких роликов</li>
                     <li>Интервью со студентами и преподавателями</li>
@@ -37,6 +37,46 @@
                     <li>«День из жизни» первокурсника</li>
                     <li>Запустить таргетинг на абитуриентов</li>
                 </ul>
+                
+                <!-- АНИМИРОВАННЫЕ ДИАГРАММЫ -->
+                <div class="tasks-charts">
+                    <h4><i class="fas fa-chart-line"></i> Прогресс выполнения задач</h4>
+                    
+                    <div class="chart-item">
+                        <div class="chart-label">Сценарии</div>
+                        <div class="chart-bar-bg">
+                            <div class="chart-bar-fill" data-width="85">85%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-item">
+                        <div class="chart-label">Съёмки</div>
+                        <div class="chart-bar-bg">
+                            <div class="chart-bar-fill" data-width="70">70%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-item">
+                        <div class="chart-label">Монтаж</div>
+                        <div class="chart-bar-bg">
+                            <div class="chart-bar-fill" data-width="65">65%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-item">
+                        <div class="chart-label">Публикации</div>
+                        <div class="chart-bar-bg">
+                            <div class="chart-bar-fill" data-width="45">45%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-item">
+                        <div class="chart-label">Охват (цель 50K)</div>
+                        <div class="chart-bar-bg">
+                            <div class="chart-bar-fill" data-width="32">16K / 50K (32%)</div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="info-card">
                 <h3><i class="fas fa-bolt" style="color: #D84315;"></i> Актуальность</h3>
@@ -50,7 +90,20 @@
     </main>
 
     <footer>
-        <p>Проектная деятельность — ФИТ, 2025</p>
+        <p>Проектная деятельность — ФИТ, 2026</p>
     </footer>
+
+    <script>
+        // Анимация заполнения диаграмм при загрузке страницы
+        window.addEventListener('load', function() {
+            const chartBars = document.querySelectorAll('.chart-bar-fill');
+            chartBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                setTimeout(() => {
+                    bar.style.width = width + '%';
+                }, 100);
+            });
+        });
+    </script>
 </body>
 </html>
