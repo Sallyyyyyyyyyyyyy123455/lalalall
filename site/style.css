@@ -1,1 +1,441 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #FFF9C4 0%, #FFE082 100%);
+    color: #3E2723;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ========== ПУЗЫРЬКИ АНИМАЦИИ ========== */
+.floating-bubbles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.floating-bubbles::before,
+.floating-bubbles::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 193, 7, 0.2);
+    border-radius: 50%;
+    animation: float 20s infinite;
+}
+
+.floating-bubbles::before {
+    top: 20%;
+    left: 10%;
+    width: 150px;
+    height: 150px;
+    animation-duration: 25s;
+}
+
+.floating-bubbles::after {
+    top: 70%;
+    right: 5%;
+    width: 200px;
+    height: 200px;
+    animation-duration: 30s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-50px) rotate(180deg); }
+}
+
+/* ========== ШАПКА ========== */
+header {
+    background: linear-gradient(135deg, #FF8F00, #FFB300, #FFCA28);
+    color: #3E2723;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.glitch {
+    animation: glitch 0.5s infinite;
+}
+
+@keyframes glitch {
+    0%, 100% { transform: skew(0deg, 0deg); }
+    95% { transform: skew(2deg, 1deg); }
+    96% { transform: skew(-2deg, -1deg); }
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+/* ========== КНОПКИ НАВИГАЦИИ (РАЗНЫЕ ФОРМЫ И АНИМАЦИИ) ========== */
+.button-group {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.nav-btn {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    background: #3E2723;
+    color: #FFD54F;
+    text-decoration: none;
+    border-radius: 40px;
+    font-weight: bold;
+    transition: 0.2s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.nav-btn:hover {
+    transform: scale(1.05);
+    background: #5D4037;
+    color: #FFE082;
+}
+
+/* Разные анимации для разных кнопок */
+.pulse { animation: pulse 1.5s infinite; }
+.shake { animation: shake 3s infinite; }
+.bounce { animation: bounce 2s infinite; }
+.spin { animation: spin 4s infinite; }
+.glow { animation: glow 2s infinite; }
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+@keyframes shake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(2deg); }
+    75% { transform: rotate(-2deg); }
+}
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 5px #FFD54F; }
+    50% { box-shadow: 0 0 20px #FFB300; }
+}
+
+/* ========== ОСНОВНОЙ КОНТЕНТ ========== */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* ========== ГЕРОЙ-БЛОК ========== */
+.hero {
+    background: rgba(255, 193, 7, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 60px;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.float-in {
+    animation: floatIn 0.8s ease-out;
+}
+
+@keyframes floatIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== КНОПКИ СОЦСЕТЕЙ ========== */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.custom-btn {
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.custom-btn:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+.vk-btn { background: #2787F5; color: white; }
+.tg-btn { background: #26A5E4; color: white; }
+.rutube-btn { background: #FF4C2C; color: white; }
+
+/* ========== СТАТИСТИКА ========== */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.stat-card {
+    background: #FFE082;
+    padding: 1.5rem;
+    border-radius: 30px;
+    text-align: center;
+    flex: 1;
+    min-width: 150px;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.stat-card:hover {
+    transform: translateY(-10px);
+    background: #FFCA28;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #D84315;
+}
+
+/* ========== ЦИТАТА ========== */
+.quote-block {
+    background: #FFB300;
+    padding: 1.5rem;
+    border-radius: 60px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-style: italic;
+    margin: 2rem 0;
+}
+
+/* ========== ЗАГОЛОВКИ ========== */
+.section-title {
+    color: #BF360C;
+    margin-bottom: 1.5rem;
+    border-left: 5px solid #FF8F00;
+    padding-left: 1rem;
+    font-size: 1.8rem;
+}
+
+/* ========== СЕТКИ КАРТОЧЕК ========== */
+.card-grid, .members-grid, .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.info-card, .member-card, .link-card {
+    background: rgba(255, 241, 184, 0.9);
+    padding: 1.5rem;
+    border-radius: 40px;
+    transition: 0.3s;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.info-card:hover, .member-card:hover, .link-card:hover {
+    transform: scale(1.02) rotate(0.5deg);
+    background: #FFECB3;
+}
+
+.info-card h3, .member-card h3, .link-card h3 {
+    color: #BF360C;
+    margin-bottom: 0.8rem;
+}
+
+.info-card ul, .link-card ul {
+    padding-left: 1.2rem;
+}
+
+.info-card li, .link-card li {
+    margin: 0.5rem 0;
+}
+
+/* ========== КАРТОЧКИ УЧАСТНИКОВ ========== */
+.member-card .role {
+    font-weight: bold;
+    color: #F57F17;
+    margin: 0.5rem 0;
+}
+
+.member-card small {
+    display: block;
+    margin-top: 0.8rem;
+    color: #6D4C41;
+    font-style: italic;
+}
+
+/* ========== МИНИ-СТАТИСТИКА ========== */
+.stats-mini {
+    background: #FFCA28;
+    padding: 1rem;
+    border-radius: 50px;
+    text-align: center;
+    margin-top: 2rem;
+    font-weight: bold;
+}
+
+/* ========== ТАЙМЛАЙН (ЖУРНАЛ) ========== */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.timeline-item {
+    display: flex;
+    background: #FFF8E1;
+    border-radius: 30px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.timeline-item:hover {
+    transform: translateX(10px);
+    background: #FFECB3;
+}
+
+.timeline-date {
+    background: #FF8F00;
+    color: white;
+    padding: 1rem;
+    min-width: 130px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.timeline-content {
+    padding: 1rem;
+    flex: 1;
+}
+
+.timeline-content h3 {
+    color: #BF360C;
+    margin-bottom: 0.5rem;
+}
+
+/* ========== СОЦИАЛЬНЫЕ ССЫЛКИ ========== */
+.social-link {
+    display: inline-block;
+    margin: 0.5rem 1rem 0.5rem 0;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.social-link:hover {
+    transform: scale(1.05);
+}
+
+.social-link.vk { background: #2787F5; }
+.social-link.tg { background: #26A5E4; }
+.social-link.rutube { background: #FF4C2C; }
+
+/* ========== ФУТЕР ========== */
+footer {
+    background: #3E2723;
+    color: #FFE082;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* ========== АДАПТИВНОСТЬ (МОБИЛЬНЫЕ УСТРОЙСТВА) ========== */
+@media (max-width: 768px) {
+    .stats {
+        flex-direction: column;
+    }
+    
+    .timeline-item {
+        flex-direction: column;
+    }
+    
+    .timeline-date {
+        min-width: auto;
+        justify-content: center;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .glitch {
+        font-size: 1.8rem;
+    }
+    
+    .hero {
+        border-radius: 30px;
+        padding: 1.5rem;
+    }
+    
+    .quote-block {
+        font-size: 1rem;
+        border-radius: 30px;
+    }
+    
+    .section-title {
+        font-size: 1.4rem;
+    }
+    
+    .button-group {
+        gap: 0.5rem;
+    }
+    
+    .nav-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 0 1rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .custom-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+}
