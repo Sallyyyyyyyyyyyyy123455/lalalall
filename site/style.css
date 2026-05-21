@@ -439,3 +439,15 @@ footer {
         font-size: 0.8rem;
     }
 }
+/* Выделение главного участника */
+.member-card.highlight {
+    background: linear-gradient(135deg, #FFF176, #FFD54F);
+    border: 2px solid #FF8F00;
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(255, 143, 0, 0.3);
+}
+
+.member-card.highlight:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #FFD54F, #FFCA28);
+}
