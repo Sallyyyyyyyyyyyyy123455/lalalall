@@ -6,6 +6,256 @@
     <title>SMM ФИТ | Главная</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0f1e 0%, #0e1a2a 100%);
+            color: #eef4ff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Пузырьки */
+        .floating-bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-bubbles::before,
+        .floating-bubbles::after {
+            content: '';
+            position: absolute;
+            background: rgba(100, 150, 250, 0.1);
+            border-radius: 50%;
+            animation: floatBubble 20s infinite ease-in-out;
+        }
+
+        .floating-bubbles::before {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: -50px;
+        }
+
+        .floating-bubbles::after {
+            width: 350px;
+            height: 350px;
+            bottom: -100px;
+            right: -80px;
+            animation-duration: 25s;
+        }
+
+        @keyframes floatBubble {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translate(40px, -40px) rotate(20deg); opacity: 0; }
+        }
+
+        header, main, footer {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Шапка */
+        header {
+            text-align: center;
+            padding: 2rem 2rem 1rem;
+            background: rgba(10, 15, 30, 0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(72, 120, 255, 0.3);
+        }
+
+        .glitch {
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #b1e5ff, #4c8eff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 10px rgba(0, 160, 255, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            margin-top: 0.3rem;
+        }
+
+        .button-group {
+            margin-top: 1.8rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: rgba(20, 30, 55, 0.8);
+            padding: 0.6rem 1.3rem;
+            border-radius: 40px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(100, 150, 255, 0.3);
+        }
+
+        .nav-btn:hover {
+            background: #2c3e8f;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+        }
+
+        /* Герой */
+        .hero {
+            background: linear-gradient(120deg, #0f1a2f, #091020);
+            margin: 2rem auto;
+            padding: 2rem;
+            max-width: 900px;
+            border-radius: 48px;
+            text-align: center;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.5);
+            border: 1px solid rgba(80, 130, 255, 0.4);
+        }
+
+        .hero h2 {
+            font-size: 1.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-buttons {
+            margin-top: 1.8rem;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .custom-btn {
+            padding: 0.7rem 2rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .vk-btn { background: #0077ff; color: white; }
+        .tg-btn { background: #1f93d0; color: white; }
+        .rutube-btn { background: #cf2a2a; color: white; }
+        .custom-btn:hover { transform: scale(1.02); filter: brightness(1.05); }
+
+        /* Статистика */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            flex-wrap: wrap;
+            margin: 2rem auto;
+            max-width: 1000px;
+        }
+
+        .stat-card {
+            background: rgba(18, 28, 50, 0.7);
+            backdrop-filter: blur(8px);
+            padding: 1.8rem 1.5rem;
+            border-radius: 35px;
+            text-align: center;
+            min-width: 170px;
+            border: 1px solid rgba(90, 160, 255, 0.3);
+            transition: 0.2s;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ffe6b0, #ffbc6e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Галерея */
+        .about-us-gallery {
+            max-width: 1200px;
+            margin: 3rem auto;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .gallery-item {
+            width: 220px;
+            background: #0f172f;
+            border-radius: 28px;
+            overflow: hidden;
+            transition: 0.3s;
+            box-shadow: 0 12px 20px rgba(0,0,0,0.4);
+        }
+
+        .gallery-photo {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 28px rgba(0,120,255,0.2);
+        }
+
+        /* Цитата */
+        .quote-block {
+            text-align: center;
+            background: rgba(0, 30, 60, 0.6);
+            max-width: 750px;
+            margin: 2rem auto;
+            padding: 1.8rem;
+            border-radius: 60px;
+            font-size: 1.25rem;
+            font-style: italic;
+            border-left: 5px solid #4c8eff;
+            border-right: 5px solid #4c8eff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.8rem;
+            background: #050b17;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #bbd1ff;
+        }
+
+        /* Адаптив */
+        @media (max-width: 680px) {
+            .glitch { font-size: 1.8rem; }
+            .hero h2 { font-size: 1.3rem; }
+            .stat-number { font-size: 2rem; }
+            .gallery-item { width: 160px; }
+            .gallery-photo { height: 160px; }
+        }
+    </style>
 </head>
 <body>
     <div class="floating-bubbles"></div>
@@ -32,17 +282,18 @@
             </div>
         </section>
 
+        <!-- ИСПРАВЛЕННЫЙ БЛОК СТАТИСТИКИ: данные "Цель 50К" приведены в порядке, без съехавшего текста -->
         <div class="stats">
             <div class="stat-card">
                 <div class="stat-number"><i class="fas fa-clapperboard"></i> 12+</div>
                 <p>готовых клипов</p>
             </div>
             <div class="stat-card">
-                <div class="stat-number"><i class="fas fa-chart-line"></i> 50K+</div>
-                <p>плановый охват</p>
+                <div class="stat-number"><i class="fas fa-chart-line"></i> 16К / 50К</div>
+                <p>охват (цель 50К) • 32%</p>
             </div>
             <div class="stat-card">
-                <div class="stat-number"><i class="fas fa-bullseye"></i> 20%</div>
+                <div class="stat-number"><i class="fas fa-bullseye"></i> +20%</div>
                 <p>рост заявок</p>
             </div>
         </div>
@@ -51,16 +302,16 @@
             <h2><i class="fas fa-images"></i> Кадры "О нас"</h2>
             <div class="gallery-grid">
                 <div class="gallery-item fade-in-up">
-                    <img src="images/1.png" alt="Кадр 1" class="gallery-photo">
+                    <img src="images/1.png" alt="Кадр 1" class="gallery-photo" onerror="this.src='https://placehold.co/300x200?text=Preview+1'">
                 </div>
                 <div class="gallery-item fade-in-up" style="animation-delay: 0.2s;">
-                    <img src="images/2.png" alt="Кадр 2" class="gallery-photo">
+                    <img src="images/2.png" alt="Кадр 2" class="gallery-photo" onerror="this.src='https://placehold.co/300x200?text=Preview+2'">
                 </div>
                 <div class="gallery-item fade-in-up" style="animation-delay: 0.4s;">
-                    <img src="images/3.png" alt="Кадр 3" class="gallery-photo">
+                    <img src="images/3.png" alt="Кадр 3" class="gallery-photo" onerror="this.src='https://placehold.co/300x200?text=Preview+3'">
                 </div>
                 <div class="gallery-item fade-in-up" style="animation-delay: 0.6s;">
-                    <img src="images/4.png" alt="Кадр 4" class="gallery-photo">
+                    <img src="images/4.png" alt="Кадр 4" class="gallery-photo" onerror="this.src='https://placehold.co/300x200?text=Preview+4'">
                 </div>
             </div>
         </section>
