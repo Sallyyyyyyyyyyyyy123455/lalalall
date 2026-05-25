@@ -197,7 +197,7 @@ main {
 .tg-btn { background: #26A5E4; color: white; }
 .rutube-btn { background: #FF4C2C; color: white; }
 
-/* ========== СТАТИСТИКА ========== */
+/* ========== СТАТИСТИКА (ИСПРАВЛЕНО - ТЕПЕРЬ ТЕКСТ ВЛЕЗАЕТ) ========== */
 .stats {
     display: flex;
     justify-content: space-around;
@@ -212,9 +212,11 @@ main {
     border-radius: 30px;
     text-align: center;
     flex: 1;
-    min-width: 150px;
+    min-width: 130px;
     transition: 0.3s;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .stat-card:hover {
@@ -223,9 +225,40 @@ main {
 }
 
 .stat-number {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     color: #D84315;
+    line-height: 1.3;
+    white-space: normal;
+    word-break: keep-all;
+}
+
+/* Адаптация для планшетов */
+@media (max-width: 768px) {
+    .stat-number {
+        font-size: 1.3rem;
+    }
+    .stat-card {
+        padding: 1rem;
+        min-width: 110px;
+    }
+    .stat-card p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Адаптация для телефонов */
+@media (max-width: 550px) {
+    .stat-number {
+        font-size: 1rem;
+    }
+    .stat-card {
+        padding: 0.8rem;
+        min-width: 95px;
+    }
+    .stat-card p {
+        font-size: 0.7rem;
+    }
 }
 
 /* ========== ЦИТАТА ========== */
@@ -294,6 +327,19 @@ main {
     margin-top: 0.8rem;
     color: #6D4C41;
     font-style: italic;
+}
+
+/* Выделение главного участника */
+.member-card.highlight {
+    background: linear-gradient(135deg, #FFF176, #FFD54F);
+    border: 2px solid #FF8F00;
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(255, 143, 0, 0.3);
+}
+
+.member-card.highlight:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #FFD54F, #FFCA28);
 }
 
 /* ========== МИНИ-СТАТИСТИКА ========== */
@@ -367,90 +413,6 @@ main {
 .social-link.tg { background: #26A5E4; }
 .social-link.rutube { background: #FF4C2C; }
 
-/* ========== ФУТЕР ========== */
-footer {
-    background: #3E2723;
-    color: #FFE082;
-    text-align: center;
-    padding: 1.5rem;
-    margin-top: 3rem;
-    position: relative;
-    z-index: 1;
-}
-
-/* ========== АДАПТИВНОСТЬ (МОБИЛЬНЫЕ УСТРОЙСТВА) ========== */
-@media (max-width: 768px) {
-    .stats {
-        flex-direction: column;
-    }
-    
-    .timeline-item {
-        flex-direction: column;
-    }
-    
-    .timeline-date {
-        min-width: auto;
-        justify-content: center;
-    }
-    
-    header h1 {
-        font-size: 1.8rem;
-    }
-    
-    .glitch {
-        font-size: 1.8rem;
-    }
-    
-    .hero {
-        border-radius: 30px;
-        padding: 1.5rem;
-    }
-    
-    .quote-block {
-        font-size: 1rem;
-        border-radius: 30px;
-    }
-    
-    .section-title {
-        font-size: 1.4rem;
-    }
-    
-    .button-group {
-        gap: 0.5rem;
-    }
-    
-    .nav-btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.8rem;
-    }
-}
-
-@media (max-width: 480px) {
-    main {
-        padding: 0 1rem;
-    }
-    
-    .stat-number {
-        font-size: 1.5rem;
-    }
-    
-    .custom-btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.8rem;
-    }
-}
-/* Выделение главного участника */
-.member-card.highlight {
-    background: linear-gradient(135deg, #FFF176, #FFD54F);
-    border: 2px solid #FF8F00;
-    transform: scale(1.02);
-    box-shadow: 0 10px 30px rgba(255, 143, 0, 0.3);
-}
-
-.member-card.highlight:hover {
-    transform: scale(1.05);
-    background: linear-gradient(135deg, #FFD54F, #FFCA28);
-}
 /* ========== ГАЛЕРЕЯ "О НАС" ========== */
 .about-us-gallery {
     margin: 2rem 0;
@@ -537,4 +499,74 @@ footer {
     font-weight: bold;
     font-size: 0.8rem;
     transition: width 1.5s ease-out;
+}
+
+/* ========== ФУТЕР ========== */
+footer {
+    background: #3E2723;
+    color: #FFE082;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* ========== АДАПТИВНОСТЬ (МОБИЛЬНЫЕ УСТРОЙСТВА) ========== */
+@media (max-width: 768px) {
+    .stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .timeline-item {
+        flex-direction: column;
+    }
+    
+    .timeline-date {
+        min-width: auto;
+        justify-content: center;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .glitch {
+        font-size: 1.8rem;
+    }
+    
+    .hero {
+        border-radius: 30px;
+        padding: 1.5rem;
+    }
+    
+    .quote-block {
+        font-size: 1rem;
+        border-radius: 30px;
+    }
+    
+    .section-title {
+        font-size: 1.4rem;
+    }
+    
+    .button-group {
+        gap: 0.5rem;
+    }
+    
+    .nav-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 0 1rem;
+    }
+    
+    .custom-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
 }
